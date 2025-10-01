@@ -225,6 +225,28 @@ API_KEY=secret123'
           <li>After migration, set env vars directly in Netlify UI (most secure)</li>
         </ul>
       </div>
+
+      {/* Open Source Info */}
+      <div className="mt-4 p-4 border border-gray-200 rounded-lg" style={{ backgroundColor: '#c4d8ed' }}>
+        <h3 className="font-semibold text-gray-900 mb-2">💻 Fully Open Source:</h3>
+        <p className="text-sm text-gray-800 mb-2">
+          This tool is completely open source. You can review the code, contribute, or report issues on GitHub.
+        </p>
+        <p className="text-sm text-gray-800">
+          <strong>GitHub Repository:</strong>{' '}
+          <a
+            href="https://github.com/SohniSwatantra/vercel-to-netlify-migrator"
+            className="text-blue-900 hover:text-blue-950 underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://github.com/SohniSwatantra/vercel-to-netlify-migrator
+          </a>
+        </p>
+        <p className="text-sm text-gray-800 mt-2">
+          ✨ <strong>Contributions are welcome!</strong> Feel free to submit pull requests, report bugs, or suggest features.
+        </p>
+      </div>
     </div>
     </div>
   )
