@@ -1,0 +1,50 @@
+# Node modules
+node_modules/
+web/node_modules/
+*/node_modules/
+
+# Build artifacts
+web/dist/
+*.log
+
+# Environment files (never include in Docker image)
+.env
+.env.*
+*.env
+.env.local
+.env.production
+.env.development
+.env.netlify
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated files
+netlify.toml
+MIGRATION_CHECKLIST.md
+ENV_MIGRATION_INSTRUCTIONS.md
+netlify-env-commands.sh
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Documentation
+README.md
+web/README.md
+
+# Test files
+test/
+*.test.js

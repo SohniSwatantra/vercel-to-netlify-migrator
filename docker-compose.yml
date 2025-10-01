@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # Web UI - Isolated container for migration tool
+  migration-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vercel-netlify-migrator
+    ports:
+      - "3000:3000"
+    environment:
+      # No sensitive env vars needed - everything is client-side!
+      - NODE_ENV=production
+    networks:
+      - migration-network
+    restart: unless-stopped
+    # Security: Read-only filesystem
+    read_only: true
+    # Security: No new privileges
+    security_opt:
+      - no-new-privileges:true
+    # Security: Drop all capabilities
+    cap_drop:
+      - ALL
+    # Temporary directories for read-only filesystem
+    tmpfs:
+      - /tmp:size=100M,mode=1777
+    labels:
+      - "description=Vercel to Netlify Migration Tool - Fully Isolated"
+      - "security=client-side-processing-only"
+
+  # Optional: CLI-only container for automation
+  migration-cli:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: cli-builder
+    container_name: vercel-netlify-cli
+    working_dir: /app/cli
+    volumes:
+      # Mount your project directory (read-only for security)
+      - ./project:/project:ro
+      # Mount output directory (write-only)
+      - ./output:/output
+    entrypoint: ["node", "index.js"]
+    command: ["migrate", "-p", "/project"]
+    networks:
+      - migration-network
+    # Security settings
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    profiles:
+      - cli  # Only start with: docker-compose --profile cli up
+
+networks:
+  migration-network:
+    driver: bridge
+    # Isolated network - no external access needed

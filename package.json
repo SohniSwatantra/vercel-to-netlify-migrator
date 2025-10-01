@@ -1,0 +1,29 @@
+{
+  "name": "vercel-to-netlify-migrator",
+  "version": "1.0.0",
+  "description": "CLI tool to migrate projects from Vercel to Netlify",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "v2n-migrate": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "vercel",
+    "netlify",
+    "migration",
+    "deployment",
+    "cli"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "inquirer": "^9.2.12",
+    "dotenv": "^16.3.1",
+    "js-yaml": "^4.1.0"
+  }
+}

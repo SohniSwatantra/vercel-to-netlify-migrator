@@ -1,0 +1,16 @@
+node_modules/
+.DS_Store
+*.log
+.env
+.env.local
+.env.netlify
+netlify-env-commands.sh
+MIGRATION_CHECKLIST.md
+ENV_MIGRATION_INSTRUCTIONS.md
+
+# Build outputs
+web/dist/
+web/node_modules/
+
+# OS files
+.DS_Store
